@@ -12,11 +12,19 @@ export function BottomNav() {
     pathname.startsWith('/profile/professional') || 
     pathname.startsWith('/profile/supplier') || 
     pathname.startsWith('/profile/consultant') ||
-    pathname.startsWith('/rate');
+    pathname.startsWith('/rate') ||
+    pathname.match(/^\/supplier\/leads\/[^\/]+$/) ||
+    (pathname.startsWith('/supplier/profile/') && pathname !== '/supplier/profile') ||
+    pathname.startsWith('/supplier/reviews') ||
+    (pathname.startsWith('/supplier/catalogue/') && pathname !== '/supplier/catalogue') ||
+    pathname.startsWith('/supplier/subscription') ||
+    pathname.startsWith('/supplier/onboarding');
 
   if (isHidden) return null;
 
-  const navItems = [
+  const isSupplierPath = pathname.startsWith('/supplier');
+
+  const homeownerNavItems = [
     {
       label: 'Discover',
       icon: 'explore',
@@ -42,6 +50,41 @@ export function BottomNav() {
       isActive: pathname === '/profile' || pathname.startsWith('/profile/edit'),
     },
   ];
+
+  const supplierNavItems = [
+    {
+      label: 'Home',
+      icon: 'home',
+      href: '/supplier',
+      isActive: pathname === '/supplier',
+    },
+    {
+      label: 'Leads',
+      icon: 'leaderboard',
+      href: '/supplier/leads',
+      isActive: pathname.startsWith('/supplier/leads'),
+    },
+    {
+      label: 'Analytics',
+      icon: 'analytics',
+      href: '/supplier/analytics',
+      isActive: pathname.startsWith('/supplier/analytics'),
+    },
+    {
+      label: 'Catalogue',
+      icon: 'category',
+      href: '/supplier/catalogue',
+      isActive: pathname.startsWith('/supplier/catalogue'),
+    },
+    {
+      label: 'Profile',
+      icon: 'storefront',
+      href: '/supplier/profile',
+      isActive: pathname.startsWith('/supplier/profile') && !pathname.startsWith('/supplier/catalogue'),
+    },
+  ];
+
+  const navItems = isSupplierPath ? supplierNavItems : homeownerNavItems;
 
   return (
     <nav className="fixed bottom-0 left-0 w-full z-40 flex justify-around items-center h-16 pb-safe px-4 bg-surface border-t border-outline-variant shadow-[0_-4px_16px_rgba(0,0,0,0.05)] md:hidden">
