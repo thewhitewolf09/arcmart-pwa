@@ -1,11 +1,11 @@
 'use client';
 
-import React from 'react';
+import React, { Suspense } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { motion } from 'framer-motion';
 import { useConnect } from '../../context/ConnectContext';
 
-export default function ComparePage() {
+function ComparePageContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const { openConnect } = useConnect();
@@ -157,5 +157,17 @@ export default function ComparePage() {
         </div>
       </main>
     </div>
+  );
+}
+
+export default function ComparePage() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen bg-background flex flex-col items-center justify-center p-4">
+        <div className="w-8 h-8 border-4 border-primary border-t-transparent rounded-full animate-spin"></div>
+      </div>
+    }>
+      <ComparePageContent />
+    </Suspense>
   );
 }

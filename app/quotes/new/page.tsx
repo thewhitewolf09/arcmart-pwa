@@ -1,10 +1,10 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, Suspense } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { motion } from 'framer-motion';
 
-export default function NewQuoteRequestPage() {
+function NewQuoteRequestPageContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const supplierIds = searchParams.get('supplierIds')?.split(',') || [];
@@ -148,5 +148,17 @@ export default function NewQuoteRequestPage() {
         </button>
       </div>
     </div>
+  );
+}
+
+export default function NewQuoteRequestPage() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen bg-background flex flex-col items-center justify-center p-4">
+        <div className="w-8 h-8 border-4 border-primary border-t-transparent rounded-full animate-spin"></div>
+      </div>
+    }>
+      <NewQuoteRequestPageContent />
+    </Suspense>
   );
 }
