@@ -30,8 +30,13 @@ export default function SupplierAnalytics() {
   const router = useRouter();
   const { user } = useMockStore();
 
+  React.useEffect(() => {
+    if (!user) {
+      router.push('/auth');
+    }
+  }, [user, router]);
+
   if (!user) {
-    router.push('/auth');
     return null;
   }
 

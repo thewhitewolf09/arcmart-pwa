@@ -12,8 +12,13 @@ export default function SupplierProfile() {
   const router = useRouter();
   const { user } = useMockStore();
 
+  React.useEffect(() => {
+    if (!user) {
+      router.push('/auth');
+    }
+  }, [user, router]);
+
   if (!user) {
-    router.push('/auth');
     return null;
   }
 

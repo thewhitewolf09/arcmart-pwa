@@ -53,8 +53,13 @@ export default function SupplierLeads() {
   const [activeTab, setActiveTab] = useState('all');
   const [isFilterOpen, setIsFilterOpen] = useState(false);
 
+  React.useEffect(() => {
+    if (!user) {
+      router.push('/auth');
+    }
+  }, [user, router]);
+
   if (!user) {
-    router.push('/auth');
     return null;
   }
 

@@ -1,11 +1,11 @@
 'use client';
 
-import React from 'react';
+import React, { Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { Clock, CheckCircle2, XCircle, MessageCircle, AlertTriangle, ArrowRight, Home } from 'lucide-react';
 import Link from 'next/link';
 
-export default function OnboardingStatus() {
+function OnboardingStatusContent() {
   const searchParams = useSearchParams();
   const state = searchParams.get('state') || 'pending'; // pending | approved | rejected
 
@@ -98,5 +98,18 @@ export default function OnboardingStatus() {
         </Link>
       </div>
     </div>
+  );
+}
+
+export default function OnboardingStatus() {
+  return (
+    <Suspense fallback={
+      <div className="flex-1 flex flex-col min-h-screen bg-surface items-center justify-center">
+        <div className="w-16 h-16 border-4 border-outline-variant border-t-primary rounded-full animate-spin mb-4"></div>
+        <h2 className="text-lg font-bold text-on-surface">Loading...</h2>
+      </div>
+    }>
+      <OnboardingStatusContent />
+    </Suspense>
   );
 }

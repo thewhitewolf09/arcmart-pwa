@@ -1,10 +1,10 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Suspense } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { ArrowLeft, ShieldCheck, CreditCard, Building2, Smartphone, ChevronRight } from 'lucide-react';
 
-export default function Checkout() {
+function CheckoutContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const [isProcessing, setIsProcessing] = useState(false);
@@ -157,5 +157,18 @@ export default function Checkout() {
         </button>
       </div>
     </div>
+  );
+}
+
+export default function Checkout() {
+  return (
+    <Suspense fallback={
+      <div className="flex-1 flex flex-col min-h-screen bg-surface items-center justify-center">
+        <div className="w-16 h-16 border-4 border-outline-variant border-t-primary rounded-full animate-spin mb-4"></div>
+        <h2 className="text-lg font-bold text-on-surface">Loading...</h2>
+      </div>
+    }>
+      <CheckoutContent />
+    </Suspense>
   );
 }
