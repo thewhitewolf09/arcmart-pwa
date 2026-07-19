@@ -107,7 +107,7 @@ export default function LeadAlertPage() {
           <div className="flex items-center gap-4 mb-6">
             <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-slate-200 to-slate-400 p-0.5">
               <div className="w-full h-full rounded-[14px] overflow-hidden bg-slate-800">
-                <img src="https://ui-avatars.com/api/?name=Rajesh+K&background=random" className="w-full h-full object-cover" />
+                <img src="https://ui-avatars.com/api/?name=Rajesh+K&background=random" alt="Lead Avatar" className="w-full h-full object-cover" />
               </div>
             </div>
             <div>

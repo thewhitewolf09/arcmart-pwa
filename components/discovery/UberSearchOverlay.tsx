@@ -192,7 +192,7 @@ export default function UberSearchOverlay({ isOpen, onClose }: UberSearchOverlay
                               <span className="material-symbols-outlined text-primary">{result.icon}</span>
                             </div>
                           ) : (
-                            <img src={result.avatar} className="w-12 h-12 rounded-full object-cover shrink-0" />
+                            <img src={result.avatar} alt={result.title} className="w-12 h-12 rounded-full object-cover shrink-0" />
                           )}
                           <div className="flex-1 overflow-hidden">
                             <h4 className="font-headline-md text-[16px] truncate">{result.title}</h4>

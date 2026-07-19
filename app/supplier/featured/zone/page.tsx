@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { ArrowLeft, Search, MapPin, CheckCircle2, ArrowRight, AlertCircle } from 'lucide-react';
+import { ArrowLeft, Search, MapPin, CheckCircle2, ArrowRight, AlertCircle, TrendingUp } from 'lucide-react';
 import Link from 'next/link';
 
 export default function ZoneSelect() {
