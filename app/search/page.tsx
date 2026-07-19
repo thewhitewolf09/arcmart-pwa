@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Suspense } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { motion } from 'framer-motion';
 import { ArrowLeft, SlidersHorizontal, Map as MapIcon, List, BookmarkPlus, Bookmark, Search } from 'lucide-react';
@@ -9,7 +9,7 @@ import MapView from '../../components/search/MapView';
 import SaveSearchPrompt from '../../components/search/SaveSearchPrompt';
 import UberSearchOverlay from '../../components/discovery/UberSearchOverlay';
 
-export default function SearchResultsPage() {
+function SearchResultsContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const query = searchParams.get('q') || '';
@@ -190,5 +190,13 @@ export default function SearchResultsPage() {
       />
 
     </div>
+  );
+}
+
+export default function SearchResultsPage() {
+  return (
+    <Suspense fallback={<div className="min-h-screen bg-surface flex items-center justify-center">Loading search results...</div>}>
+      <SearchResultsContent />
+    </Suspense>
   );
 }
