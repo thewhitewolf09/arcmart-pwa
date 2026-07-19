@@ -55,7 +55,11 @@ const config: Config = {
         "error-container": "#ffdad6",
         "surface-bright": "#f8f9fa",
         "on-primary": "#ffffff",
-        "surface-container-highest": "#e1e3e4"
+        "surface-container-highest": "#e1e3e4",
+        "success": "#059669",
+        "warning": "#d97706",
+        "warning-dark": "#b45309",
+        "info": "#0284c7"
       },
       borderRadius: {
         "DEFAULT": "0.25rem",

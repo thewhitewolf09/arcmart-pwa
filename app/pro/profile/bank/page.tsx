@@ -1,0 +1,118 @@
+'use client';
+
+import React, { useState } from 'react';
+import { useRouter } from 'next/navigation';
+import { ArrowLeft, Landmark, Send, CheckCircle2, AlertCircle } from 'lucide-react';
+
+export default function BankDetails() {
+  const router = useRouter();
+  const [submitted, setSubmitted] = useState(false);
+
+  if (submitted) {
+    return (
+      <div className="flex-1 flex flex-col min-h-screen bg-success/5 justify-center p-5">
+        <div className="bg-surface border border-outline-variant rounded-3xl p-8 text-center shadow-xl">
+          <div className="w-20 h-20 bg-success/20 rounded-full flex items-center justify-center mx-auto mb-6">
+            <CheckCircle2 className="w-10 h-10 text-success" />
+          </div>
+          <h1 className="text-2xl font-black text-on-surface mb-2">Details Saved</h1>
+          <p className="text-sm text-on-surface-variant mb-8">
+            Your payout details have been securely saved. Large job payments will be routed here.
+          </p>
+          <button 
+            onClick={() => router.back()}
+            className="w-full py-4 bg-primary text-white font-bold rounded-xl flex items-center justify-center shadow-lg"
+          >
+            Done
+          </button>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="flex-1 flex flex-col min-h-screen bg-surface">
+      {/* App Bar */}
+      <div className="sticky top-0 z-40 bg-surface/80 backdrop-blur-lg border-b border-outline-variant px-4 py-3 flex items-center justify-between">
+        <div className="flex items-center">
+          <button onClick={() => router.back()} className="p-2 -ml-2 mr-2 rounded-full hover:bg-surface-variant text-on-surface transition">
+            <ArrowLeft className="w-5 h-5" />
+          </button>
+          <span className="font-bold text-on-surface truncate">Bank Details</span>
+        </div>
+      </div>
+
+      <div className="flex-1 p-5 pb-32">
+        <div className="glass-card border border-primary/20 bg-primary/5 rounded-3xl p-5 mb-8 flex items-start">
+          <Landmark className="w-6 h-6 text-primary mr-3 shrink-0 mt-0.5" />
+          <div>
+            <h2 className="text-sm font-black text-on-surface mb-1">For Future Payouts</h2>
+            <p className="text-xs text-on-surface-variant leading-relaxed">
+              When a customer books a large job via the ArcMart platform, the payment will be routed securely to this bank account.
+            </p>
+          </div>
+        </div>
+
+        <div className="space-y-6">
+          <div>
+            <label className="block text-xs font-bold uppercase tracking-widest text-on-surface-variant mb-2 ml-1">
+              Account Holder Name
+            </label>
+            <input 
+              type="text" 
+              placeholder="e.g. Arun Sharma"
+              className="w-full bg-surface glass-card border border-outline-variant rounded-xl px-4 py-3.5 text-sm font-bold text-on-surface focus:outline-none focus:border-primary transition"
+            />
+          </div>
+
+          <div>
+            <label className="block text-xs font-bold uppercase tracking-widest text-on-surface-variant mb-2 ml-1">
+              Account Number
+            </label>
+            <input 
+              type="password" 
+              placeholder="Enter Account Number"
+              className="w-full bg-surface glass-card border border-outline-variant rounded-xl px-4 py-3.5 text-sm font-bold text-on-surface focus:outline-none focus:border-primary transition font-mono tracking-widest"
+            />
+          </div>
+          
+          <div>
+            <label className="block text-xs font-bold uppercase tracking-widest text-on-surface-variant mb-2 ml-1">
+              Confirm Account Number
+            </label>
+            <input 
+              type="text" 
+              placeholder="Re-enter Account Number"
+              className="w-full bg-surface glass-card border border-outline-variant rounded-xl px-4 py-3.5 text-sm font-bold text-on-surface focus:outline-none focus:border-primary transition font-mono"
+            />
+          </div>
+
+          <div>
+            <label className="block text-xs font-bold uppercase tracking-widest text-on-surface-variant mb-2 ml-1">
+              IFSC Code
+            </label>
+            <input 
+              type="text" 
+              placeholder="e.g. HDFC0001234"
+              className="w-full bg-surface glass-card border border-outline-variant rounded-xl px-4 py-3.5 text-sm font-bold text-on-surface focus:outline-none focus:border-primary transition uppercase"
+            />
+          </div>
+
+          <div className="flex items-center justify-center text-[10px] font-bold text-on-surface-variant uppercase tracking-widest mt-8 opacity-50">
+            <AlertCircle className="w-3 h-3 mr-1" /> End-to-end encrypted
+          </div>
+        </div>
+      </div>
+
+      {/* Action Area */}
+      <div className="fixed bottom-0 left-0 w-full p-4 pb-safe bg-surface border-t border-outline-variant shadow-[0_-8px_20px_rgba(0,0,0,0.05)] z-30">
+        <button 
+          onClick={() => setSubmitted(true)}
+          className="w-full py-4 bg-primary text-white font-bold rounded-xl flex items-center justify-center shadow-lg shadow-primary/30 hover:bg-primary/90 transition"
+        >
+          Securely Save Details <Send className="w-4 h-4 ml-2" />
+        </button>
+      </div>
+    </div>
+  );
+}

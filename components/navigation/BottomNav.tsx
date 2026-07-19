@@ -18,11 +18,32 @@ export function BottomNav() {
     pathname.startsWith('/supplier/reviews') ||
     (pathname.startsWith('/supplier/catalogue/') && pathname !== '/supplier/catalogue') ||
     pathname.startsWith('/supplier/subscription') ||
-    pathname.startsWith('/supplier/onboarding');
+    pathname.startsWith('/supplier/onboarding') ||
+    pathname.startsWith('/pro/onboarding') ||
+    pathname.startsWith('/pro/incoming') ||
+    (pathname.startsWith('/pro/leads/') && pathname !== '/pro/leads') ||
+    pathname.match(/^\/pro\/jobs\/[^\/]+$/) ||
+    pathname.startsWith('/pro/wallet/') ||
+    (pathname.startsWith('/pro/profile/') && pathname !== '/pro/profile') ||
+    pathname.startsWith('/pro/notifications') ||
+    pathname.startsWith('/pro/referral') ||
+    pathname.startsWith('/pro/support') ||
+    pathname.startsWith('/pro/feedback') ||
+    (pathname.startsWith('/consultant/leads/') && pathname !== '/consultant/leads') ||
+    (pathname.startsWith('/consultant/properties/') && pathname !== '/consultant/properties') ||
+    (pathname.startsWith('/consultant/profile/') && pathname !== '/consultant/profile') ||
+    pathname.startsWith('/consultant/wallet') ||
+    pathname.startsWith('/consultant/onboarding') ||
+    pathname.startsWith('/consultant/notifications') ||
+    pathname.startsWith('/consultant/referral') ||
+    pathname.startsWith('/consultant/insights') ||
+    pathname.startsWith('/consultant/support');
 
   if (isHidden) return null;
 
   const isSupplierPath = pathname.startsWith('/supplier');
+  const isProPath = pathname.startsWith('/pro');
+  const isConsultantPath = pathname.startsWith('/consultant');
 
   const homeownerNavItems = [
     {
@@ -84,7 +105,73 @@ export function BottomNav() {
     },
   ];
 
-  const navItems = isSupplierPath ? supplierNavItems : homeownerNavItems;
+  const proNavItems = [
+    {
+      label: 'Home',
+      icon: 'home',
+      href: '/pro',
+      isActive: pathname === '/pro',
+    },
+    {
+      label: 'Leads',
+      icon: 'leaderboard',
+      href: '/pro/leads',
+      isActive: pathname.startsWith('/pro/leads'),
+    },
+    {
+      label: 'Earnings',
+      icon: 'account_balance_wallet',
+      href: '/pro/earnings',
+      isActive: pathname.startsWith('/pro/earnings'),
+    },
+    {
+      label: 'Jobs',
+      icon: 'work',
+      href: '/pro/jobs',
+      isActive: pathname.startsWith('/pro/jobs'),
+    },
+    {
+      label: 'Profile',
+      icon: 'person',
+      href: '/pro/profile',
+      isActive: pathname.startsWith('/pro/profile'),
+    },
+  ];
+
+  const consultantNavItems = [
+    {
+      label: 'Home',
+      icon: 'home',
+      href: '/consultant',
+      isActive: pathname === '/consultant',
+    },
+    {
+      label: 'Leads',
+      icon: 'leaderboard',
+      href: '/consultant/leads',
+      isActive: pathname.startsWith('/consultant/leads'),
+    },
+    {
+      label: 'Properties',
+      icon: 'maps_home_work',
+      href: '/consultant/properties',
+      isActive: pathname.startsWith('/consultant/properties'),
+    },
+    {
+      label: 'Profile',
+      icon: 'person',
+      href: '/consultant/profile',
+      isActive: pathname.startsWith('/consultant/profile'),
+    },
+  ];
+
+  const navItems = isConsultantPath 
+    ? consultantNavItems 
+    : isProPath 
+      ? proNavItems 
+      : isSupplierPath 
+        ? supplierNavItems 
+        : homeownerNavItems;
 
   return (
     <nav className="fixed bottom-0 left-0 w-full z-40 flex justify-around items-center h-16 pb-safe px-4 bg-surface border-t border-outline-variant shadow-[0_-4px_16px_rgba(0,0,0,0.05)] md:hidden">
