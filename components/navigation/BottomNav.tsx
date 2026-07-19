@@ -19,6 +19,8 @@ export function BottomNav() {
     (pathname.startsWith('/supplier/catalogue/') && pathname !== '/supplier/catalogue') ||
     pathname.startsWith('/supplier/subscription') ||
     pathname.startsWith('/supplier/onboarding') ||
+    pathname.startsWith('/supplier/featured') ||
+    pathname.startsWith('/supplier/wallet') ||
     pathname.startsWith('/pro/onboarding') ||
     pathname.startsWith('/pro/incoming') ||
     (pathname.startsWith('/pro/leads/') && pathname !== '/pro/leads') ||
@@ -37,7 +39,8 @@ export function BottomNav() {
     pathname.startsWith('/consultant/notifications') ||
     pathname.startsWith('/consultant/referral') ||
     pathname.startsWith('/consultant/insights') ||
-    pathname.startsWith('/consultant/support');
+    pathname.startsWith('/consultant/support') ||
+    pathname.startsWith('/system');
 
   if (isHidden) return null;
 

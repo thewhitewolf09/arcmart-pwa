@@ -71,6 +71,17 @@ export default function ConsultantProfileHub() {
               </div>
               <ChevronRight className="w-5 h-5 text-outline" />
             </Link>
+
+            <Link href="/account/billing" className="glass-card rounded-2xl p-4 border border-outline-variant shadow-sm flex items-center justify-between hover:bg-surface-variant transition">
+              <div className="flex items-center">
+                <Building2 className="w-5 h-5 text-on-surface-variant mr-3" />
+                <div>
+                  <p className="text-sm font-bold text-on-surface">Billing & Invoices</p>
+                  <p className="text-[10px] text-on-surface-variant font-semibold">GST details & past receipts</p>
+                </div>
+              </div>
+              <ChevronRight className="w-5 h-5 text-outline" />
+            </Link>
           </div>
         </section>
 

@@ -24,7 +24,7 @@ export default function AccountSettingsPage() {
         </div>
       </header>
 
-      <main className="flex-1 overflow-y-auto px-4 py-6">
+      <main className="flex-1 overflow-y-auto px-4 pt-6 pb-32">
         <div className="space-y-6">
           
           {/* General Section */}
@@ -105,7 +105,7 @@ export default function AccountSettingsPage() {
                 <span className="material-symbols-outlined text-on-surface-variant">chevron_right</span>
               </button>
 
-              <div className="w-full flex items-center justify-between p-4 bg-transparent">
+              <div className="w-full flex items-center justify-between p-4 bg-transparent border-b border-outline-variant/30">
                 <div className="flex items-center gap-3">
                   <span className="material-symbols-outlined text-on-surface-variant">campaign</span>
                   <div>
@@ -117,6 +117,51 @@ export default function AccountSettingsPage() {
                   <input type="checkbox" checked={promosEnabled} onChange={() => setPromosEnabled(!promosEnabled)} className="sr-only peer" />
                   <div className="w-11 h-6 bg-surface-container-high peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
                 </label>
+              </div>
+
+              <div className="w-full flex items-center justify-between p-4 bg-transparent">
+                <div className="flex items-center gap-3">
+                  <span className="material-symbols-outlined text-on-surface-variant">dark_mode</span>
+                  <div>
+                    <span className="font-label-lg text-on-surface block">Theme</span>
+                    <span className="font-body-sm text-on-surface-variant">App appearance</span>
+                  </div>
+                </div>
+                <select 
+                  className="bg-surface-container border border-outline-variant rounded-lg px-3 py-1 font-label-md text-on-surface focus:outline-none"
+                >
+                  <option value="system">System Default</option>
+                  <option value="light">Light Mode</option>
+                  <option value="dark">Dark Mode</option>
+                </select>
+              </div>
+            </div>
+          </section>
+
+          {/* Connected Accounts */}
+          <section>
+            <h2 className="font-label-md font-bold text-primary mb-3 uppercase tracking-wider">Connected Accounts</h2>
+            <div className="bg-surface-container-lowest border border-outline-variant/30 rounded-2xl overflow-hidden shadow-sm">
+              <div className="w-full flex items-center justify-between p-4 bg-transparent border-b border-outline-variant/30">
+                <div className="flex items-center gap-3">
+                  <span className="material-symbols-outlined text-success">chat</span>
+                  <div>
+                    <span className="font-label-lg text-on-surface block">WhatsApp</span>
+                    <span className="font-body-sm text-on-surface-variant">+91 98765 43210</span>
+                  </div>
+                </div>
+                <span className="text-xs font-bold text-success bg-success/10 px-2 py-1 rounded-md">Linked</span>
+              </div>
+              
+              <div className="w-full flex items-center justify-between p-4 bg-transparent hover:bg-surface-container transition-colors cursor-pointer">
+                <div className="flex items-center gap-3">
+                  <span className="material-symbols-outlined text-on-surface-variant">account_circle</span>
+                  <div>
+                    <span className="font-label-lg text-on-surface block">Google Account</span>
+                    <span className="font-body-sm text-on-surface-variant">Not connected</span>
+                  </div>
+                </div>
+                <span className="text-xs font-bold text-primary">Connect</span>
               </div>
             </div>
           </section>

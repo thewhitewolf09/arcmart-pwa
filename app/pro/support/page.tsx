@@ -43,7 +43,7 @@ export default function SupportFAQ() {
         </div>
       </div>
 
-      <div className="flex-1 p-5 pb-safe">
+      <div className="flex-1 p-5 pb-32">
         
         <div className="flex flex-col items-center justify-center mb-8 pt-4">
           <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-4">
@@ -76,7 +76,8 @@ export default function SupportFAQ() {
 
         <section>
           <h3 className="text-xs font-bold uppercase tracking-widest text-on-surface-variant mb-4 ml-1">Contact ArcMart</h3>
-          <div className="grid grid-cols-2 gap-4">
+          
+          <div className="grid grid-cols-2 gap-4 mb-4">
             <button className="glass-card border border-outline-variant rounded-2xl p-4 flex flex-col items-center justify-center text-center hover:bg-surface-variant transition shadow-sm">
               <MessageCircle className="w-6 h-6 text-success mb-2" />
               <p className="font-bold text-sm text-on-surface">WhatsApp</p>
@@ -86,6 +87,19 @@ export default function SupportFAQ() {
               <PhoneCall className="w-6 h-6 text-primary mb-2" />
               <p className="font-bold text-sm text-on-surface">Call Us</p>
               <p className="text-[10px] text-on-surface-variant font-semibold">9AM - 6PM</p>
+            </button>
+          </div>
+
+          <div className="grid grid-cols-2 gap-4">
+            <button onClick={() => router.push('/support/ticket/new')} className="glass-card bg-primary/5 border border-primary/20 rounded-2xl p-4 flex flex-col items-center justify-center text-center hover:bg-primary/10 transition shadow-sm">
+              <span className="material-symbols-outlined text-[24px] text-primary mb-2">assignment_add</span>
+              <p className="font-bold text-sm text-primary">Submit Ticket</p>
+              <p className="text-[10px] text-primary/70 font-semibold">For complex issues</p>
+            </button>
+            <button onClick={() => router.push('/support/tickets')} className="glass-card border border-outline-variant rounded-2xl p-4 flex flex-col items-center justify-center text-center hover:bg-surface-variant transition shadow-sm">
+              <span className="material-symbols-outlined text-[24px] text-on-surface-variant mb-2">confirmation_number</span>
+              <p className="font-bold text-sm text-on-surface">My Tickets</p>
+              <p className="text-[10px] text-on-surface-variant font-semibold">Track resolutions</p>
             </button>
           </div>
         </section>

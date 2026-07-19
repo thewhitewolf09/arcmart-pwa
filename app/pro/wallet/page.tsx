@@ -26,6 +26,9 @@ export default function ProWallet() {
           </button>
           <span className="font-bold text-on-surface truncate">My Wallet</span>
         </div>
+        <Link href="/system/lead-fee-info" className="p-2 rounded-full hover:bg-surface-variant text-on-surface-variant transition">
+          <AlertCircle className="w-5 h-5" />
+        </Link>
       </div>
 
       <div className="flex-1 p-5 pb-24 space-y-6">
@@ -63,7 +66,10 @@ export default function ProWallet() {
 
         {/* Transaction History */}
         <section>
-          <h3 className="text-xs font-bold uppercase tracking-widest text-on-surface-variant mb-4 ml-1">Recent Transactions</h3>
+          <div className="flex items-center justify-between mb-4">
+            <h3 className="text-xs font-bold uppercase tracking-widest text-on-surface-variant ml-1">Recent Transactions</h3>
+            <Link href="/pro/wallet/history" className="text-xs font-bold text-primary hover:underline">View All</Link>
+          </div>
           <div className="space-y-3">
             {transactions.map((tx) => (
               <div key={tx.id} className="glass-card border border-outline-variant rounded-2xl p-4 flex items-center justify-between shadow-sm">

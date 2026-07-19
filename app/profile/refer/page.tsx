@@ -3,12 +3,15 @@
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
+import { CheckCircle2, Clock, Info, ChevronDown, ChevronUp } from 'lucide-react';
 
 export default function ReferPage() {
   const router = useRouter();
   const [copied, setCopied] = useState(false);
+  const [showTerms, setShowTerms] = useState(false);
   
   const referralCode = 'ARCMART-AMAN-25';
+  const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://arcmart.in/invite/${referralCode}`;
 
   const handleCopy = () => {
     navigator.clipboard.writeText(referralCode);
@@ -23,9 +26,20 @@ export default function ReferPage() {
   };
 
   const referrals = [
-    { name: 'Rahul Sharma', date: '12 Jul 2026', status: 'completed', reward: '₹500', icon: 'check_circle', color: 'text-[#25D366]' },
-    { name: 'Sneha Menon', date: '15 Jul 2026', status: 'pending', reward: '₹500', icon: 'schedule', color: 'text-amber-500' },
-    { name: 'Vikram Singh', date: '18 Jul 2026', status: 'pending', reward: '₹500', icon: 'schedule', color: 'text-amber-500' }
+    { 
+      name: 'Rahul Sharma', 
+      date: '12 Jul 2026', 
+      status: 'completed',
+      reward: '₹500', 
+      steps: [true, true, true] // Joined, Booked, Earned
+    },
+    { 
+      name: 'Sneha Menon', 
+      date: '15 Jul 2026', 
+      status: 'pending',
+      reward: '₹500 (Pending)', 
+      steps: [true, false, false] // Joined, Not Booked, Not Earned
+    },
   ];
 
   return (
@@ -42,10 +56,9 @@ export default function ReferPage() {
         </button>
       </header>
 
-      <main className="flex-1 overflow-y-auto">
+      <main className="flex-1 overflow-y-auto pb-32">
         {/* Modern Hero Section with Gradient */}
         <div className="relative pt-24 pb-12 px-6 flex flex-col items-center text-center overflow-hidden bg-gradient-to-br from-primary via-primary to-tertiary">
-          {/* Decorative Background Elements */}
           <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
             <motion.div 
               animate={{ rotate: 360 }} 
@@ -92,48 +105,21 @@ export default function ReferPage() {
           <div className="flex-1 bg-surface-container-lowest rounded-2xl p-4 shadow-lg border border-outline-variant/30 flex flex-col items-center">
             <span className="material-symbols-outlined text-amber-500 mb-1">pending_actions</span>
             <span className="font-label-sm text-on-surface-variant uppercase tracking-wider mb-1">Pending</span>
-            <span className="font-headline-md font-bold text-on-surface">₹1,000</span>
+            <span className="font-headline-md font-bold text-on-surface">₹500</span>
           </div>
         </div>
 
-        {/* How it works */}
+        {/* Code & QR Section */}
         <div className="px-6 mb-8">
-          <h3 className="font-label-md font-bold text-on-surface mb-4 uppercase tracking-wider">How it works</h3>
-          <div className="flex justify-between relative">
-            {/* Connecting Line */}
-            <div className="absolute top-6 left-8 right-8 h-0.5 bg-outline-variant/50 -z-10"></div>
+          <div className="bg-surface-container-lowest border border-outline-variant/50 rounded-3xl p-6 shadow-sm relative overflow-hidden flex flex-col items-center">
+            <h3 className="font-label-sm font-bold text-on-surface-variant mb-4 uppercase tracking-wider text-center">Share Your Code</h3>
             
-            <div className="flex flex-col items-center flex-1 z-10">
-              <div className="w-12 h-12 rounded-full bg-surface-container-highest flex items-center justify-center mb-2 shadow-sm border border-surface">
-                <span className="material-symbols-outlined text-primary text-[20px]">share</span>
-              </div>
-              <span className="font-label-sm font-bold text-center">Share Link</span>
-            </div>
-            
-            <div className="flex flex-col items-center flex-1 z-10">
-              <div className="w-12 h-12 rounded-full bg-surface-container-highest flex items-center justify-center mb-2 shadow-sm border border-surface">
-                <span className="material-symbols-outlined text-primary text-[20px]">person_add</span>
-              </div>
-              <span className="font-label-sm font-bold text-center">Friend Books</span>
+            {/* QR Code */}
+            <div className="p-3 bg-white rounded-xl shadow-sm border border-outline-variant mb-6">
+              <img src={qrUrl} alt="QR Code" className="w-32 h-32" />
             </div>
 
-            <div className="flex flex-col items-center flex-1 z-10">
-              <div className="w-12 h-12 rounded-full bg-primary flex items-center justify-center mb-2 shadow-sm border border-surface text-on-primary">
-                <span className="material-symbols-outlined text-[20px]">payments</span>
-              </div>
-              <span className="font-label-sm font-bold text-center">You Earn</span>
-            </div>
-          </div>
-        </div>
-
-        {/* Code Section */}
-        <div className="px-6 mb-8">
-          <div className="bg-surface-container-lowest border border-outline-variant/50 rounded-3xl p-6 shadow-sm relative overflow-hidden">
-            {/* Background pattern */}
-            <div className="absolute -right-6 -bottom-6 w-32 h-32 bg-primary/5 rounded-full blur-2xl"></div>
-            
-            <h3 className="font-label-sm font-bold text-on-surface-variant mb-2 uppercase tracking-wider text-center">Your Unique Code</h3>
-            <div className="bg-surface-container-high rounded-2xl p-4 flex items-center justify-between mb-6">
+            <div className="w-full bg-surface-container-high rounded-2xl p-4 flex items-center justify-between mb-6">
               <span className="font-headline-sm font-bold text-on-surface tracking-widest pl-2 font-mono">
                 {referralCode}
               </span>
@@ -167,41 +153,94 @@ export default function ReferPage() {
           </div>
         </div>
 
-        {/* Track Referrals */}
-        <div className="px-6 mb-24">
+        {/* Track Referrals Pipeline */}
+        <div className="px-6 mb-8">
           <div className="flex items-center justify-between mb-4">
             <h3 className="font-label-md font-bold text-on-surface uppercase tracking-wider">My Referrals</h3>
-            <span className="font-label-sm text-primary font-bold bg-primary/10 px-3 py-1 rounded-full">{referrals.length} Friends</span>
+            <span className="font-label-sm text-primary font-bold bg-primary/10 px-3 py-1 rounded-full">{referrals.length} Invites</span>
           </div>
           
-          <div className="bg-surface-container-lowest border border-outline-variant/30 rounded-3xl overflow-hidden shadow-sm">
+          <div className="space-y-4">
             {referrals.map((ref, idx) => (
-              <div key={idx} className={`p-4 flex items-center justify-between ${idx !== referrals.length - 1 ? 'border-b border-outline-variant/30' : ''}`}>
-                <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 rounded-full bg-surface-container-high flex items-center justify-center text-on-surface font-headline-sm font-bold border border-surface">
-                    {ref.name.charAt(0)}
-                  </div>
+              <div key={idx} className="bg-surface-container-lowest border border-outline-variant/30 rounded-3xl p-5 shadow-sm">
+                <div className="flex justify-between items-center mb-4">
                   <div>
-                    <span className="font-label-lg font-bold text-on-surface block mb-0.5">{ref.name}</span>
-                    <div className="flex items-center gap-1 text-on-surface-variant font-label-sm">
-                      <span className="material-symbols-outlined text-[14px]">calendar_today</span>
-                      {ref.date}
-                    </div>
+                    <h4 className="font-bold text-on-surface">{ref.name}</h4>
+                    <p className="text-xs text-on-surface-variant font-medium mt-0.5">Invited {ref.date}</p>
+                  </div>
+                  <div className={`font-bold text-sm ${ref.status === 'completed' ? 'text-success' : 'text-amber-500'}`}>
+                    {ref.reward}
                   </div>
                 </div>
-                <div className="flex flex-col items-end">
-                  <span className={`font-label-lg font-bold block ${ref.color}`}>
-                    {ref.reward}
-                  </span>
-                  <div className="flex items-center gap-1 mt-0.5">
-                    <span className={`material-symbols-outlined text-[12px] ${ref.color}`}>{ref.icon}</span>
-                    <span className="font-label-sm text-on-surface-variant capitalize">{ref.status}</span>
+
+                {/* Pipeline UI */}
+                <div className="relative pt-4">
+                  <div className="absolute top-6 left-4 right-4 h-1 bg-surface-variant rounded-full -z-10" />
+                  <div 
+                    className="absolute top-6 left-4 h-1 bg-primary rounded-full -z-10 transition-all duration-1000"
+                    style={{ width: ref.status === 'completed' ? 'calc(100% - 2rem)' : '10%' }}
+                  />
+                  
+                  <div className="flex justify-between">
+                    <div className="flex flex-col items-center">
+                      <div className={`w-5 h-5 rounded-full flex items-center justify-center mb-2 shadow-sm ${ref.steps[0] ? 'bg-primary text-white' : 'bg-surface-variant text-on-surface-variant border border-outline-variant'}`}>
+                        {ref.steps[0] && <CheckCircle2 className="w-3 h-3" />}
+                      </div>
+                      <span className="text-[10px] font-bold text-on-surface-variant">Joined</span>
+                    </div>
+                    
+                    <div className="flex flex-col items-center">
+                      <div className={`w-5 h-5 rounded-full flex items-center justify-center mb-2 shadow-sm ${ref.steps[1] ? 'bg-primary text-white' : 'bg-surface-variant text-on-surface-variant border border-outline-variant'}`}>
+                        {ref.steps[1] ? <CheckCircle2 className="w-3 h-3" /> : <Clock className="w-3 h-3 opacity-50" />}
+                      </div>
+                      <span className="text-[10px] font-bold text-on-surface-variant">1st Booking</span>
+                    </div>
+
+                    <div className="flex flex-col items-center">
+                      <div className={`w-5 h-5 rounded-full flex items-center justify-center mb-2 shadow-sm ${ref.steps[2] ? 'bg-success text-white' : 'bg-surface-variant text-on-surface-variant border border-outline-variant'}`}>
+                        {ref.steps[2] ? <CheckCircle2 className="w-3 h-3" /> : <div className="w-1.5 h-1.5 bg-on-surface-variant/50 rounded-full" />}
+                      </div>
+                      <span className="text-[10px] font-bold text-on-surface-variant">₹500 Earned</span>
+                    </div>
                   </div>
                 </div>
               </div>
             ))}
           </div>
         </div>
+
+        {/* Terms and Conditions (REF-07) */}
+        <div className="px-6">
+          <button 
+            onClick={() => setShowTerms(!showTerms)}
+            className="w-full flex items-center justify-between p-4 bg-surface-container-lowest border border-outline-variant/50 rounded-2xl shadow-sm"
+          >
+            <div className="flex items-center gap-2">
+              <Info className="w-5 h-5 text-on-surface-variant" />
+              <span className="font-bold text-sm text-on-surface">Terms & Conditions</span>
+            </div>
+            {showTerms ? <ChevronUp className="w-5 h-5 text-on-surface-variant" /> : <ChevronDown className="w-5 h-5 text-on-surface-variant" />}
+          </button>
+          
+          <AnimatePresence>
+            {showTerms && (
+              <motion.div 
+                initial={{ height: 0, opacity: 0 }}
+                animate={{ height: 'auto', opacity: 1 }}
+                exit={{ height: 0, opacity: 0 }}
+                className="overflow-hidden"
+              >
+                <div className="p-4 mt-2 bg-surface-container text-xs text-on-surface-variant rounded-xl leading-relaxed space-y-2">
+                  <p>1. The referral bonus of ₹500 is credited only after the referred user completes and pays for their first booking via ArcMart.</p>
+                  <p>2. The referred user must be a new user who has never registered on ArcMart before.</p>
+                  <p>3. The 10% off coupon for the referred user is valid for 30 days from sign-up and capped at ₹1000.</p>
+                  <p>4. ArcMart reserves the right to revoke credits if fraudulent activity (e.g., self-referrals via same IP/device) is detected.</p>
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </div>
+
       </main>
     </div>
   );

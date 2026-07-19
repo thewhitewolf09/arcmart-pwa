@@ -35,7 +35,7 @@ export default function ConsultantSupport() {
         <span className="font-bold text-on-surface">Help & Support</span>
       </div>
 
-      <div className="flex-1 p-5 space-y-8">
+      <div className="flex-1 p-5 pb-32 space-y-8">
         
         <section>
           <h2 className="text-xl font-black text-on-surface mb-2">Contact Us</h2>
@@ -71,6 +71,17 @@ export default function ConsultantSupport() {
             </div>
             <ChevronRight className="w-5 h-5 text-on-surface-variant" />
           </a>
+
+          <div className="grid grid-cols-2 gap-3 mt-3">
+            <button onClick={() => router.push('/support/ticket/new')} className="glass-card border border-primary/30 rounded-2xl p-4 flex flex-col items-center justify-center text-center hover:bg-primary/5 transition">
+              <span className="material-symbols-outlined text-[24px] text-primary mb-2">assignment_add</span>
+              <p className="font-bold text-sm text-primary">Submit Ticket</p>
+            </button>
+            <button onClick={() => router.push('/support/tickets')} className="glass-card border border-outline-variant rounded-2xl p-4 flex flex-col items-center justify-center text-center hover:bg-surface-variant transition">
+              <span className="material-symbols-outlined text-[24px] text-on-surface-variant mb-2">confirmation_number</span>
+              <p className="font-bold text-sm text-on-surface">My Tickets</p>
+            </button>
+          </div>
         </section>
 
         <section>

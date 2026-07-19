@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import { Bell, Wallet, ChevronRight, TrendingUp, Key, MessageSquare, AlertCircle } from 'lucide-react';
+import { Footer } from '../../components/ui/Footer';
 
 export default function ConsultantDashboard() {
   const [isOnline, setIsOnline] = useState(true);
@@ -115,6 +116,7 @@ export default function ConsultantDashboard() {
         </section>
 
       </div>
+      <Footer />
     </div>
   );
 }

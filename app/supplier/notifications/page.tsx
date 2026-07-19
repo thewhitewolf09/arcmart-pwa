@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { useRouter } from 'next/navigation';
-import { ArrowLeft, Bell, Star, AlertTriangle, ShieldCheck, Zap } from 'lucide-react';
+import { ArrowLeft, Bell, Star, AlertTriangle, ShieldCheck, Zap, Settings } from 'lucide-react';
 
 export default function Notifications() {
   const router = useRouter();
@@ -56,9 +56,17 @@ export default function Notifications() {
           </button>
           <span className="font-bold text-on-surface truncate">Notifications</span>
         </div>
-        <button className="text-xs font-bold text-primary hover:underline">
-          Mark all as read
-        </button>
+        <div className="flex items-center gap-3">
+          <button className="text-xs font-bold text-primary hover:underline">
+            Mark all read
+          </button>
+          <button 
+            onClick={() => router.push('/account/notifications/settings')}
+            className="p-2 -mr-2 rounded-full hover:bg-surface-variant text-on-surface transition"
+          >
+            <Settings className="w-5 h-5" />
+          </button>
+        </div>
       </div>
 
       <div className="flex-1 overflow-y-auto p-4 pb-24 space-y-3">

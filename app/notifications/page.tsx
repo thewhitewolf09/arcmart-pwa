@@ -95,9 +95,17 @@ export default function NotificationsCenterPage() {
           </button>
           <h1 className="font-headline-sm font-bold text-on-surface">Notifications</h1>
         </div>
-        <button className="text-primary font-label-md font-bold">
-          Mark all read
-        </button>
+        <div className="flex items-center gap-3">
+          <button className="text-primary font-label-md font-bold">
+            Mark all read
+          </button>
+          <button 
+            onClick={() => router.push('/account/notifications/settings')}
+            className="w-10 h-10 rounded-full flex items-center justify-center text-on-surface hover:bg-surface-container transition-colors -mr-2"
+          >
+            <span className="material-symbols-outlined">settings</span>
+          </button>
+        </div>
       </header>
 
       <main className="flex-1 overflow-y-auto px-4 py-6">

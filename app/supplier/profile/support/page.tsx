@@ -58,6 +58,17 @@ export default function Support() {
               <MessageSquare className="w-4 h-4 mr-2 text-primary" /> Chat
             </button>
           </div>
+          
+          <div className="grid grid-cols-2 gap-4 mt-4">
+            <button onClick={() => router.push('/support/ticket/new')} className="bg-surface border border-primary/30 rounded-xl p-4 flex flex-col items-center justify-center text-center hover:bg-primary/5 transition shadow-sm">
+              <span className="material-symbols-outlined text-[24px] text-primary mb-2">assignment_add</span>
+              <p className="font-bold text-sm text-primary">Submit Ticket</p>
+            </button>
+            <button onClick={() => router.push('/support/tickets')} className="bg-surface border border-outline-variant rounded-xl p-4 flex flex-col items-center justify-center text-center hover:bg-surface-variant transition shadow-sm">
+              <span className="material-symbols-outlined text-[24px] text-on-surface-variant mb-2">confirmation_number</span>
+              <p className="font-bold text-sm text-on-surface">My Tickets</p>
+            </button>
+          </div>
         </div>
 
         {/* FAQs */}

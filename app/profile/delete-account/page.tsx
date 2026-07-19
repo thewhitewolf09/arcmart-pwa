@@ -22,7 +22,7 @@ export default function DeleteAccountPage() {
         <h1 className="font-headline-sm font-bold text-on-surface">Delete Account</h1>
       </header>
 
-      <main className="flex-1 overflow-y-auto px-4 py-6 flex flex-col">
+      <main className="flex-1 overflow-y-auto px-4 pt-6 pb-32 flex flex-col">
         
         <div className="w-16 h-16 bg-[#BA1A1A]/10 rounded-full flex items-center justify-center mb-6 self-center">
           <span className="material-symbols-outlined text-[#BA1A1A] text-[32px]">warning</span>
@@ -68,6 +68,7 @@ export default function DeleteAccountPage() {
 
           <button 
             disabled={!isConfirmed}
+            onClick={() => router.push('/profile/delete-account/verify')}
             className={`w-full py-4 rounded-full font-label-lg font-bold shadow-sm transition-all ${
               isConfirmed 
                 ? 'bg-[#BA1A1A] text-white hover:bg-[#93000A] active:scale-95' 

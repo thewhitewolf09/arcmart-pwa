@@ -106,6 +106,30 @@ export default function SupplierDashboardHome() {
         </div>
       </div>
 
+      {/* Featured Listing Promotion */}
+      <div className="mb-8">
+        <div className="bg-gradient-to-r from-warning to-warning-dark rounded-2xl p-5 shadow-lg relative overflow-hidden flex items-center justify-between">
+          <div className="absolute top-0 right-0 p-4 opacity-20">
+            <TrendingUp className="w-24 h-24 text-white transform rotate-12 translate-x-4 -translate-y-4" />
+          </div>
+          
+          <div className="relative z-10 flex-1 pr-4">
+            <div className="inline-block bg-white/20 px-2 py-0.5 rounded text-[10px] font-black uppercase tracking-widest mb-1 border border-white/30 text-white">
+              New
+            </div>
+            <h3 className="font-black text-white text-base mb-1">Dominate Your Zone</h3>
+            <p className="text-xs text-white/90">Get guaranteed top 3 placement in your pin code.</p>
+          </div>
+          
+          <Link 
+            href="/supplier/featured/upgrade" 
+            className="relative z-10 shrink-0 bg-white text-warning-dark text-xs font-bold px-4 py-2.5 rounded-xl shadow-md hover:bg-surface transition flex items-center"
+          >
+            Boost Now <ArrowRight className="w-3 h-3 ml-1" />
+          </Link>
+        </div>
+      </div>
+
       {/* New Leads Highlights */}
       <div className="mb-6">
         <div className="flex justify-between items-end mb-4">

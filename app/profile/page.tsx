@@ -103,7 +103,7 @@ export default function HomeownerProfilePage() {
         </div>
 
         {/* Tab Content */}
-        <div className="px-4 pb-6">
+        <div className="px-4 pb-32">
           {activeTab === 'settings' ? (
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="flex flex-col gap-3">
               <div className="bg-surface-container-lowest border border-outline-variant/30 rounded-2xl overflow-hidden shadow-sm">
@@ -138,7 +138,7 @@ export default function HomeownerProfilePage() {
                   <span className="material-symbols-outlined text-on-surface-variant">chevron_right</span>
                 </button>
                 <button 
-                  onClick={() => router.push('/profile/notifications')}
+                  onClick={() => router.push('/account/notifications/settings')}
                   className="w-full flex items-center justify-between p-4 bg-transparent hover:bg-surface-container transition-colors text-left border-b border-outline-variant/30"
                 >
                   <div className="flex items-center gap-3">
@@ -154,6 +154,16 @@ export default function HomeownerProfilePage() {
                   <div className="flex items-center gap-3">
                     <span className="material-symbols-outlined text-on-surface-variant">shield</span>
                     <span className="font-label-lg text-on-surface">Privacy & Security</span>
+                  </div>
+                  <span className="material-symbols-outlined text-on-surface-variant">chevron_right</span>
+                </button>
+                <button 
+                  onClick={() => router.push('/safety')}
+                  className="w-full flex items-center justify-between p-4 bg-transparent hover:bg-surface-container transition-colors text-left border-b border-outline-variant/30"
+                >
+                  <div className="flex items-center gap-3">
+                    <span className="material-symbols-outlined text-success">shield_locked</span>
+                    <span className="font-label-lg text-on-surface">Trust & Safety Center</span>
                   </div>
                   <span className="material-symbols-outlined text-on-surface-variant">chevron_right</span>
                 </button>

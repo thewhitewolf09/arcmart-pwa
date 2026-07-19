@@ -11,11 +11,16 @@ export default function ConsultantWallet() {
   return (
     <div className="flex-1 flex flex-col min-h-screen bg-surface">
       {/* App Bar */}
-      <div className="sticky top-0 z-40 bg-primary px-4 py-3 flex items-center text-white shadow-md">
-        <button onClick={() => router.back()} className="p-2 -ml-2 mr-2 rounded-full hover:bg-white/10 transition">
-          <ArrowLeft className="w-5 h-5" />
-        </button>
-        <span className="font-bold text-sm truncate">My Wallet</span>
+      <div className="sticky top-0 z-40 bg-primary px-4 py-3 flex items-center justify-between text-white shadow-md">
+        <div className="flex items-center">
+          <button onClick={() => router.back()} className="p-2 -ml-2 mr-2 rounded-full hover:bg-white/10 transition">
+            <ArrowLeft className="w-5 h-5" />
+          </button>
+          <span className="font-bold text-sm truncate">My Wallet</span>
+        </div>
+        <Link href="/system/lead-fee-info" className="p-2 -mr-2 rounded-full hover:bg-white/10 transition">
+          <AlertCircle className="w-5 h-5" />
+        </Link>
       </div>
 
       <div className="flex-1 pb-32">
@@ -67,6 +72,7 @@ export default function ConsultantWallet() {
           <section>
             <div className="flex items-center justify-between mb-4">
               <h3 className="text-xs font-bold uppercase tracking-widest text-on-surface-variant ml-1">Recent Transactions</h3>
+              <Link href="/consultant/wallet/history" className="text-xs font-bold text-primary hover:underline">View All</Link>
             </div>
             
             <div className="space-y-3">

@@ -1,6 +1,6 @@
 export function Footer() {
   return (
-    <div className="w-full text-left mt-auto pt-8 pb-4 px-2 max-w-md mx-auto">
+    <div className="w-full text-left mt-auto pt-8 pb-28 px-2 max-w-md mx-auto">
       <h2 className="font-montserrat font-bold text-[40px] leading-[1.05] text-[#D1D5DB] tracking-tight mb-6">
         India's home<br/>construction app <span className="text-[#FF5252]">❤️</span>
       </h2>

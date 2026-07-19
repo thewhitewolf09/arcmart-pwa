@@ -23,7 +23,7 @@ export default function PrivacySettingsPage() {
         </div>
       </header>
 
-      <main className="flex-1 overflow-y-auto px-4 py-6">
+      <main className="flex-1 overflow-y-auto px-4 pt-6 pb-32">
         
         {/* Data Sharing Section */}
         <section className="mb-6">
@@ -63,7 +63,7 @@ export default function PrivacySettingsPage() {
         <section className="mb-6">
           <h2 className="font-label-md font-bold text-primary mb-3 uppercase tracking-wider">Data Management (DPDP Act)</h2>
           <div className="bg-surface-container-lowest border border-outline-variant/30 rounded-2xl overflow-hidden shadow-sm">
-            <button className="w-full flex items-center justify-between p-4 bg-transparent hover:bg-surface-container transition-colors text-left border-b border-outline-variant/30">
+            <button onClick={() => router.push('/profile/settings/privacy/download')} className="w-full flex items-center justify-between p-4 bg-transparent hover:bg-surface-container transition-colors text-left border-b border-outline-variant/30">
               <div className="flex items-center gap-3">
                 <span className="material-symbols-outlined text-on-surface-variant">download</span>
                 <div>
@@ -73,7 +73,7 @@ export default function PrivacySettingsPage() {
               </div>
               <span className="material-symbols-outlined text-on-surface-variant">chevron_right</span>
             </button>
-            <button className="w-full flex items-center justify-between p-4 bg-transparent hover:bg-surface-container transition-colors text-left">
+            <button className="w-full flex items-center justify-between p-4 bg-transparent hover:bg-surface-container transition-colors text-left border-b border-outline-variant/30">
               <div className="flex items-center gap-3">
                 <span className="material-symbols-outlined text-on-surface-variant">policy</span>
                 <div>
@@ -82,6 +82,16 @@ export default function PrivacySettingsPage() {
                 </div>
               </div>
               <span className="material-symbols-outlined text-on-surface-variant">open_in_new</span>
+            </button>
+            <button onClick={() => router.push('/profile/settings/privacy/blocked')} className="w-full flex items-center justify-between p-4 bg-transparent hover:bg-surface-container transition-colors text-left">
+              <div className="flex items-center gap-3">
+                <span className="material-symbols-outlined text-on-surface-variant">block</span>
+                <div>
+                  <span className="font-label-lg text-on-surface block">Blocked Users</span>
+                  <span className="font-body-sm text-on-surface-variant">Manage accounts you have blocked</span>
+                </div>
+              </div>
+              <span className="material-symbols-outlined text-on-surface-variant">chevron_right</span>
             </button>
           </div>
         </section>

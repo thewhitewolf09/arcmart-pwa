@@ -82,14 +82,15 @@ export default function BadgesAndAchievements() {
           {achievements.map((badge) => (
             <div 
               key={badge.id}
-              className={`glass-card border rounded-2xl p-4 flex items-start ${
+              onClick={() => router.push(`/pro/profile/badges/${badge.id}`)}
+              className={`cursor-pointer glass-card border rounded-2xl p-4 flex items-start hover:scale-[1.02] transition-transform active:scale-95 ${
                 badge.unlocked ? 'border-primary/30 bg-primary/5 shadow-sm' : 'border-outline-variant bg-surface opacity-70 grayscale'
               }`}
             >
               <div className="mr-4 shrink-0 mt-1">
                 {badge.icon}
               </div>
-              <div className="flex-1">
+              <div className="flex-1 pr-2">
                 <h4 className="font-bold text-sm text-on-surface">{badge.title}</h4>
                 <p className="text-xs text-on-surface-variant leading-relaxed mt-1 mb-2">{badge.description}</p>
                 
@@ -108,6 +109,9 @@ export default function BadgesAndAchievements() {
                     </p>
                   </div>
                 )}
+              </div>
+              <div className="shrink-0 flex items-center justify-center self-center h-full">
+                <span className="material-symbols-outlined text-outline-variant">chevron_right</span>
               </div>
             </div>
           ))}

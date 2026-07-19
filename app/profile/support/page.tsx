@@ -74,10 +74,10 @@ export default function SupportPage() {
         <h1 className="font-headline-sm font-bold text-on-surface">Help & Support</h1>
       </header>
 
-      <main className="flex-1 overflow-y-auto px-4 py-6">
+      <main className="flex-1 overflow-y-auto px-4 pt-6 pb-32">
         
         {/* Contact Actions */}
-        <div className="grid grid-cols-2 gap-3 mb-8">
+        <div className="grid grid-cols-2 gap-3 mb-4">
           <button className="flex flex-col items-center justify-center p-4 bg-primary/10 rounded-2xl hover:bg-primary/20 transition-colors">
             <span className="material-symbols-outlined text-primary text-[32px] mb-2" style={{ fontVariationSettings: "'FILL' 1" }}>chat</span>
             <span className="font-label-md font-bold text-primary">Chat with Us</span>
@@ -85,6 +85,18 @@ export default function SupportPage() {
           <button className="flex flex-col items-center justify-center p-4 bg-surface-container-highest rounded-2xl hover:bg-surface-container transition-colors">
             <span className="material-symbols-outlined text-on-surface-variant text-[32px] mb-2">mail</span>
             <span className="font-label-md font-bold text-on-surface">Email Support</span>
+          </button>
+        </div>
+
+        {/* Ticketing Actions */}
+        <div className="grid grid-cols-2 gap-3 mb-8">
+          <button onClick={() => router.push('/support/ticket/new')} className="flex flex-col items-center justify-center p-4 bg-secondary-container/50 rounded-2xl hover:bg-secondary-container/80 transition-colors border border-secondary-container">
+            <span className="material-symbols-outlined text-on-secondary-container text-[28px] mb-2">assignment_add</span>
+            <span className="font-label-md font-bold text-on-secondary-container">Submit a Ticket</span>
+          </button>
+          <button onClick={() => router.push('/support/tickets')} className="flex flex-col items-center justify-center p-4 bg-surface-container-highest rounded-2xl hover:bg-surface-variant transition-colors border border-outline-variant/30">
+            <span className="material-symbols-outlined text-on-surface-variant text-[28px] mb-2">confirmation_number</span>
+            <span className="font-label-md font-bold text-on-surface">My Tickets</span>
           </button>
         </div>
 
